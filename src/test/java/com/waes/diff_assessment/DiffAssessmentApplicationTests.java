@@ -9,9 +9,11 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class DiffAssessmentApplicationTests {
 
-	@Test
-	public void contextLoads() {
-	}
+  @Test
+  public void contextLoads() {}
 
+  @Test
+  public void applicationStarts() {
+    DiffAssessmentApplication.main(new String[] {});
+  }
 }
-

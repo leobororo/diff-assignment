@@ -1,23 +1,33 @@
 version: '3'
 services:
 
-  db:
-    image: mysql:latest
-    restart: always
-    ports:
-      - "3306:3306"
+  mongo:
+    image: mongo:latest
     environment:
-      - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=diff
-      - MYSQL_ROOT_HOST=%
+      - MONGO_INITDB_DATABASE=diff
+    ports:
+      - "27017:27017"
 
   backend:
     build: .
     environment:
-      - MYSQL_HOST=db
-      - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=diff
+      - MONGO_HOST=mongo
+      - PORT=8080
+      - "JAVA_OPTS=-Xms128m -Xmx256m -XX:MetaspaceSize=128m -XX:MaxMetaspaceSize=256m -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8093"
     ports:
       - "8080:8080"
+      - "8093:8093"
     depends_on:
-      - db
+      - mongo
+
+  async_backend:
+    build: .
+    environment:
+      - MONGO_HOST=mongo
+      - PORT=8081
+      - PROFILE=worker
+      - "JAVA_OPTS=-Xms128m -Xmx256m -XX:MetaspaceSize=128m -XX:MaxMetaspaceSize=256m -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8094"
+    ports:
+      - "8094:8094"
+    depends_on:
+      - mongo
