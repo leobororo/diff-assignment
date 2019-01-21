@@ -67,7 +67,6 @@ It's also possible format the code running: ./gradlew goJF
 You should download and install these properly on your system. Visit the websites (linked) to find instructions on how to set them up.
 
  * [Gradle](https://gradle.org/) - Build tool
- * [Lombok](https://projectlombok.org) - Compile Tool helps generating code.
  * [Java](https://www.java.com/en/download/) - Java Runtime environment
  * [Docker](https://docs.docker.com/) - Docker containers
 
