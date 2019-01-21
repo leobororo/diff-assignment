@@ -20,7 +20,7 @@ apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 
 bootJar {
-    baseName = 'diff_assessment'
+    baseName = 'diff-assignment'
     version = '1.0'
 }
 
