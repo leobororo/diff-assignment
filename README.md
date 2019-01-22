@@ -193,7 +193,7 @@ When the diff is ready to be picked up and solved:
 ```
 The asynchronous instance of the application has the "worker" profile activated. When "worker" profile is active the SolveDiffJob bean is assembled and managed by the spring container. This bean has a method annotated with @Scheduled that triggers at every 5 seconds and solves the pending diffs as follows:
 1. Searches for diff resources whose status is equal to READY_TO_PROCESS.
-2. Delegates to DiffSolver the calculation of the diff according to this assignment specification.
+2. Delegates to DiffSolver which will decode and calculate the diff according to the specification.
 
 #### Tests
 
