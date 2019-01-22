@@ -93,6 +93,8 @@ PUT http://localhost:8080/v1/diff/ID/left
 
 PUT http://localhost:8080/v1/diff/ID/right
 
+## Implementation
+
 ### Assumptions
 
 The application was built based on some assumptions:
