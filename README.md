@@ -1,6 +1,6 @@
-# Diff Service
+# Diff Application
 
-Diff Service is an application based on Java 8 and SpringBoot 2 that calculates the diff of two text files base64 encoded.
+Diff is an application based on Java 8 and SpringBoot 2 that calculates the diff of two text files base64 encoded.
 
 # Table of Contents
 
@@ -71,18 +71,13 @@ You should download and install these properly on your system. Visit the website
  * [Docker](https://docs.docker.com/) - Docker containers
 
 ## How to deploy
-#### Build backend and run tests
+#### Build backend, run tests and verify code formatting
 ```bash
 $ ./gradlew clean build
 ```
-#### Build the services images as described in the docker-compose.yml file and in the Dockerfile
-``` bash
-$ docker-compose build
+#### Build and run the Docker containers
 ```
-
-#### Run the Docker containers
-```
-$ docker-compose up
+$ docker-compose up --build
 ```
 
 ## Swagger documentation
@@ -190,6 +185,13 @@ When the diff is ready to be picked up and solved:
 The asynchronous instance of the application has the "worker" profile activated. When "worker" profile is active the SolveDiffJob bean is assembled and managed by the spring container. This bean has a method annotated with @Scheduled that triggers at every 5 seconds and solves the pending diffs as follows:
 1. Searches for diff resources whose status is equal to READY_TO_PROCESS.
 2. Delegates to DiffSolver the calculation of the diff according to this assignment specification.
+
+#### Tests
+
+* DiffControllerIntegrationTest : end-to-end integration test
+* SolveDiffJobTest : unit test to test the job
+* DiffServiceImplTest : unit test to test the service layer
+* DiffSolverTest : unit test to test the logic that solves the diff
 
 ### Improvements
 
