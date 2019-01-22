@@ -16,7 +16,7 @@ Diff is an application based on Java 8 and SpringBoot 2 that calculates the diff
 - [`Implementation`](#implementation)
 
 ## Author
-* [Leandro Inacio de Oliveira Bororo]
+* Leandro Inacio de Oliveira Bororo
 
 ## Stack
 ``` bash
