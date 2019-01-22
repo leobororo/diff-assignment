@@ -12,6 +12,7 @@ Diff is an application based on Java 8 and SpringBoot 2 that calculates the diff
 - [`Tools`](#tools)
 - [`How to deploy`](#how-to-deploy)
 - [`Swagger documentation`](#swagger-documentation)
+- [`Endpoint`](#endpoints)
 - [`Implementation`](#implementation)
 
 ## Author
@@ -84,13 +85,21 @@ $ docker-compose up --build
 
 After successfully building and deploying the application. The api documentation can be accessed at http://localhost:8080/swagger-ui.html
 
-## Implementation
+## Swagger documentation
+
+## Endpoints
+
+GET http://localhost:8080/v1/diff
+
+PUT http://localhost:8080/v1/diff/ID/left
+
+PUT http://localhost:8080/v1/diff/ID/right
 
 ### Assumptions
 
 The application was built based on some assumptions:
 
-1. The requests to **host/v1/diff/ID/left**, **host/v1/diff/ID/right** and **host/v1/diff/ID** provide the diff resource URI. For this reason it was assumed that there is a previous step to create the diff resource (something like an HTTP POST method call that retrieves the newly added diff resource). In order to avoid extra steps the calls to host/v1/diff/ID/left and host/v1/diff/ID/right are done through an HTTP PUT call (even though PUT should be used only for updating) but behind the scenes if the diff resource does not exist the application creates a new one. 
+1. The URIs **host/v1/diff/ID/left**, **host/v1/diff/ID/right** and **host/v1/diff/ID** contain the diff resource URI. For this reason it was assumed that there is a previous step to create the diff resource (something like an HTTP POST method call that retrieves the newly added diff resource). In order to avoid extra steps the calls to host/v1/diff/ID/left and host/v1/diff/ID/right are done through an HTTP PUT call (even though PUT should be used only for updating) but behind the scenes if the diff resource does not exist the application creates a new one. 
 2. Because the diff endpoints start with **host/v1/diff** it was assumed that context-path should not be added to the URLs. For this reason the URLs start with http://localhost:8080/v1/diff.
 3. It was assumed that **host/v1/diff/ID/left** and **host/v1/diff/ID/right** endpoints calls do not have to return a response body.
 4. It was assumed that offset values should start at position 0.
