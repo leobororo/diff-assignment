@@ -12,7 +12,7 @@ Diff is an application based on Java 8 and SpringBoot 2 that calculates the diff
 - [`Tools`](#tools)
 - [`How to deploy`](#how-to-deploy)
 - [`Swagger documentation`](#swagger-documentation)
-- [`Endpoint`](#endpoints)
+- [`Endpoints`](#endpoints)
 - [`Implementation`](#implementation)
 
 ## Author
@@ -84,8 +84,6 @@ $ docker-compose up --build
 ## Swagger documentation
 
 After successfully building and deploying the application. The api documentation can be accessed at http://localhost:8080/swagger-ui.html
-
-## Swagger documentation
 
 ## Endpoints
 
